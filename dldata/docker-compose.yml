@@ -1,0 +1,18 @@
+version: '3' # Don't touch this
+
+services: # Don't touch this
+    darklist_blacklist: # Don't touch this
+        restart: unless-stopped
+        build: # Don't touch this
+            dockerfile: Dockerfile # Don't touch this
+            context: ./dockerfiles/darklist_blacklist/ # Don't touch this
+        container_name: $BLACKLIST_NAME # Edit in the .env file
+        tty: true # Don't touch this
+        networks: # Don't touch this
+            - darklist # Don't touch this
+        volumes:
+            - ./volumes/darklist_blacklist/go:/go # Don't touch this
+
+networks: # Don't touch this
+    darklist: # Don't touch this
+        external: true # Don't touch this
