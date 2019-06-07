@@ -4,9 +4,13 @@ package main
 /* Imports */
 import (
 	"fmt"
+	"net/http"
+	"time"
 )
 
-/* Main method */
+/* Main method:
+   Self explanitory
+*/
 func main() {
-	fmt.Println("Hello World!")
+
 }

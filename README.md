@@ -18,8 +18,22 @@ Before using Darklist ensure the system running Darklist meets the following req
 To install Darklist please follow the steps below:  
 1. Clone the repository:  
 ``` cd /tmp && git clone https://github.com/h0lysp4nk/Darklist.git && mv /tmp/Darklist /opt/darklist ```
-2. Edit the configuration at:  
-``` /opt/darklist/dldata/config.ini ```
+2. Create a configuration at:  
+``` /opt/darklist/volumes/darklist_blacklist/config.json ```  
+With the contents of:  
+```
+{
+    "smtp": {
+        "host": "192.168.1.87",
+        "port": "587",
+        "username": "darklist@example.com",
+        "password": "mypassword123",
+        "ssltls": false,
+        "starttls": true
+    },
+    "runat": "09:00:00"
+}
+```
 3. Once you've edited the confugration type the following command to install Darklist:  
 ``` cd /opt/darklist && bash darklist.sh install ```
 
