@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Change GOPATH
+export GOPATH=/go
+
+# Change working directory to GOPATH
+cd $GOPATH/src/github.com/h0lysp4nk/darklist/blacklist
+
 # Check if a previous build of Blacklist exists
 if [ -e "/bootstrap/blacklist" ]; then
     echo "[!] Removing old build of Blacklist..."
@@ -24,8 +30,7 @@ else
 fi
 
 # Compile the Golang application
-echo "[!] Compiling Golang Application"
-go build -o /bootstrap/blacklist /go/src/github.com/h0lysp4nk/darklist/blacklist/main
+go build -o /bootstrap/blacklist ./
 if [ $? -eq 0 ]; then
     echo "[!] Success! Golang Application has been compiled."
 else

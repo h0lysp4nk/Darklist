@@ -11,7 +11,8 @@ services: # Don't touch this
         networks: # Don't touch this
             - darklist # Don't touch this
         volumes:
-            - ./volumes/darklist_blacklist/go:/go # Don't touch this
+            - ${PWD}/volumes/darklist_blacklist/go:/go # Don't touch this
+            - /opt/darklist/dldata/volumes/darklist_blacklist/config.json:/go/config.json # Don't touch this
 
 networks: # Don't touch this
     darklist: # Don't touch this

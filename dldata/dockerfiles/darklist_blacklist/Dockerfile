@@ -14,7 +14,7 @@ RUN apk update && apk upgrade && apk add \
 RUN rm -rf /var/cache/apk/*
 
 # Create Golang folder
-RUN mkdir -p /bootstrap && mkdir -p /go/bin
+RUN mkdir -p /bootstrap && mkdir -p /go/bin && mkdir -p /go/pkg
 
 # Copy script
 COPY ./start.sh /bootstrap/start.sh
