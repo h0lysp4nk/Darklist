@@ -7,10 +7,17 @@ import (
 	"encoding/json"
 )
 
-/* Config Structure:
+/* BLACKLISTConfig Structure:
 	This struct defines the allowed keys/values in the JSON file
 */
-type Config struct {
+type BLACKLISTConfig struct {
+    Blacklists []string `json:"blacklists"`
+}
+
+/* SMTPConfig Structure:
+	This struct defines the allowed keys/values in the JSON file
+*/
+type SMTPConfig struct {
     SMTP struct {
         Host     string `json:"host"`
 		Port string `json:"port"`
@@ -19,13 +26,27 @@ type Config struct {
 		SSLTLS bool `json:"ssltls"`
         STARTTLS bool `json:"starttls"`
     }
-    RunAt string `json:"runat"`
+    Interval int `json:"interval"`
 }
 
-/* LoadConfiguration:
+/* LoadSMTPConfiguration:
 	Function will load a JSON file and return it
 */
-func LoadConfiguration(file string) (config Config, err error) {
+func LoadSMTPConfiguration(file string) (config SMTPConfig, err error) {
+    configFile, err := os.Open(file)
+    defer configFile.Close()
+    if err != nil {
+        return
+    }
+    dec := json.NewDecoder(configFile)
+    err = dec.Decode(&config)
+    return
+}
+
+/* LoadBLACKLISTConfiguration:
+	Function will load a JSON file and return it
+*/
+func LoadBLACKLISTConfiguration(file string) (config BLACKLISTConfig, err error) {
     configFile, err := os.Open(file)
     defer configFile.Close()
     if err != nil {

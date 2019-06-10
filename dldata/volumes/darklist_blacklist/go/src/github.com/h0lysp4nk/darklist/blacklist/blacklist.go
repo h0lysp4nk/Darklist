@@ -12,7 +12,7 @@ import (
 /* Debug Mode:
 	Enable debugging information
 */
-var debug = false
+var debug = true
 
 /* Main method:
 	Self explanitory
@@ -31,25 +31,45 @@ func main() {
 	fmt.Println("")
 	fmt.Println("")
 
-	/* Load configuration */
+	/* Load SMTP configuration */
 	if debug == true {
-		fmt.Println("[!] Loading configuration...")
+		fmt.Println("[!] Loading smtp configuration...")
 	}
-	config, err := jsonconf.LoadConfiguration("/go/config.json")
+	smtpConfig, smtpErr := jsonconf.LoadSMTPConfiguration("/go/configs/smtp.json")
 
 	/* Ensure there are no errors */
-	if err == nil {
+	if smtpErr == nil {
 		if debug == true {
-			fmt.Println("[!] Success! Configuration loaded...")
-			fmt.Println(config)
+			fmt.Println("[!] Success! Configuration loaded.!")
+			fmt.Println(smtpConfig)
 		}
 	} else {
 		fmt.Println("[!] Error! Something has gone wrong!")
 
 		if debug == true {
-			fmt.Println(err)
+			fmt.Println(smtpErr)
 		}
 		
+	}
+
+	/* Load BLACKLIST configuration */
+	if debug == true {
+		fmt.Println("[!] Loading blacklist configuration...")
+	}
+	blacklistConfig, blacklistErr := jsonconf.LoadBLACKLISTConfiguration("/go/configs/blacklist.json")
+
+	/* Ensure there are no errors */
+	if blacklistErr == nil {
+		if debug == true {
+			fmt.Println("[!] Success! Blacklist configuration loaded!")
+			fmt.Println(blacklistConfig)
+		}
+	} else {
+		fmt.Println("[!] Error! Something has gone wrong!")
+
+		if debug == true {
+			fmt.Println(blacklistErr)
+		}
 	}
 
 }
