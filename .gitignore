@@ -12,6 +12,6 @@
 *.out
 
 # Configuration file
-*.json
+dldata/volumes/darklist_blacklist/configs/smtp.json
 
 dldata/volumes/darklist_blacklist/go/pkg

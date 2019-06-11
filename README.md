@@ -34,22 +34,6 @@ With the contents of:
     "runat": "09:00:00"
 }
 ```  
-and modify it. Furthermore create another configuration file at:  
-``` /opt/darklist/volumes/darklist_blacklist/configs/blacklist.json```  
-With the contents of:
-```
-{
-    "blacklists": [
-        "bl.spamcop.net",
-        "all.spamrats.com",
-        "spam.dnsbl.sorbs.net",
-        "zen.spamhaus.org",
-        "dnsbl.sorbs.net",
-        "b.barracudacentral.org"
-    ]
-}
-```  
-you can additionally add more or remove blacklists although, this isn't supported!
 3. Once you've edited the configuration type the following command to install Darklist:  
 ``` cd /opt/darklist && bash darklist.sh install ```
 
