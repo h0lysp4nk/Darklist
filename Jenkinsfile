@@ -15,12 +15,9 @@ pipeline {
                 /* 'docker rmi' returns non-zero on test failures,
                 *  Command deletes all docker images to clean the Jenkins server
                 */
-                sh 'docker rmi $(docker images -a)'
+                sh 'docker system prune -f'
             }
         }
-    }
-    environment {
-        EMAIL_TO = 'liamjosephkeenan@gmail.com'
     }
     post {
         changed {
@@ -35,7 +32,7 @@ pipeline {
                             [$class: 'RequesterRecipientProvider']
                         ], 
                         replyTo: '$DEFAULT_REPLYTO',
-                        to: '$DEFAULT_RECIPIENTS'
+                        to: 'liamjosephkeenan@gmail.com'
                 }
             }
         }
